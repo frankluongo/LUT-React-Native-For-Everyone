@@ -1,15 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
+import { StyleSheet, TextInput, Text, View } from 'react-native';
 
 // npm run ios and npm run android
+// facebook.github.io for react native documentation
 
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.view1}></View>
-        <View style={styles.view2}></View>
+        <TextInput placeholder="Write Text Here..." style={styles.input} />
       </View>
     );
   }
@@ -18,10 +17,10 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // flexDirection: 'row',
     backgroundColor: '#ffffff',
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 20
   },
   heading: {
     fontSize: 32
@@ -29,16 +28,11 @@ const styles = StyleSheet.create({
   body: {
     fontSize: 24
   },
-  view1: {
-    backgroundColor: '#ff00ff',
-    height: 100,
+  input: {
+    height: 40,
     width: '100%',
-    flex: 4
-  },
-  view2: {
-    backgroundColor: '#00ffff',
-    height: 100,
-    width: '100%',
-    flex: 1
+    borderColor: '#333',
+    borderWidth: 1,
+    padding: 5
   }
 });
