@@ -7,7 +7,7 @@ import { StyleSheet, TextInput, Text, View } from 'react-native';
 export default class App extends React.Component {
 
   state = {
-    inputValue: "Hello!"
+    inputValue: ""
   }
 
   handleChange (text) {
@@ -16,16 +16,31 @@ export default class App extends React.Component {
     });
   }
 
+  displayTipValue (number) {
+    let tip = 0.00;
+    if (number) {
+      tip = parseFloat(number) * 0.2;
+      tip = this.roundTip(tip)
+    }
+    return tip;
+  }
+
+  roundTip (tip) {
+    return Math.round(tip * 100 / 100).toFixed(2);
+  }
+
   render() {
     let { inputValue } = this.state;
     return (
       <View style={styles.container}>
         <Text>
-          { inputValue }
+          ${ this.displayTipValue(inputValue) }
         </Text>
         <TextInput
           value={inputValue}
-          placeholder="Write Text Here..." style={styles.input}
+          placeholder="0.00"
+          style={styles.input}
+          keyboardType="numeric"
           onChangeText={this.handleChange.bind(this)}
         />
       </View>
