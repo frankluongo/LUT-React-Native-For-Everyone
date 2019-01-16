@@ -6,6 +6,8 @@ import {
 } from 'native-base';
 import AppHeader from './Components/AppHeader';
 
+// import Hello from './Hello';
+
 // npm run ios and npm run android
 // facebook.github.io for react native documentation
 
@@ -83,6 +85,7 @@ export default class App extends React.Component {
         <AppHeader />
         <Content padder>
         <View style={styles.container}>
+          {/* <Hello /> */}
           <Text>${ this.displayTipValue(inputValue) }</Text>
           <TextInput
             value={inputValue}
