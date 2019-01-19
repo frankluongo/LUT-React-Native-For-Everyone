@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, TextInput, Text, View, Button } from 'react-native';
+import { Content } from 'native-base';
+import Values from './Values';
 
 export default class TipCalculator extends Component {
 
@@ -15,17 +17,6 @@ export default class TipCalculator extends Component {
       inputValue: text
     });
   }
-
-  displayTipValue (number) {
-    let tip = 0.00;
-    if (number) {
-      tip = parseFloat(number) * this.state.tipAmount;
-      tip = this.roundTip(tip)
-    }
-    return tip;
-  }
-
-  roundTip (tip) { return Math.round(tip * 100 / 100).toFixed(2); }
 
   updateTipAmount (newAmount) {
     this.setState({
@@ -63,26 +54,35 @@ export default class TipCalculator extends Component {
 
     return (
       <View style={styles.container}>
-        <Text>${ this.displayTipValue(inputValue) }</Text>
-        <TextInput
-          value={inputValue}
-          placeholder="0.00"
-          style={styles.input}
-          keyboardType="numeric"
-          onChangeText={this.handleChange.bind(this)}
-        />
-        <View style={styles.buttonGroup}>
-          <Button title="10%" onPress={this.updateTipAmount.bind(this, 0.1)} />
-          <Button title="20%" onPress={this.updateTipAmount.bind(this, 0.2)} />
-          <Button title="25%" onPress={this.updateTipAmount.bind(this, 0.25)} />
-          <TextInput
-            value={(tipAmount * 100).toString()}
-            placeholder="20%"
-            style={styles.customTip}
-            keyboardType="numeric"
-            onChangeText={this.updateCustomTipAmount.bind(this)}
+        <Content style={{width: '100%'}}>
+          <Values
+            tipPercent={tipAmount}
+            bill={inputValue}
           />
-        </View>
+          <View style={styles.inputs}>
+            <TextInput
+              value={inputValue}
+              placeholder="0.00"
+              style={styles.input}
+              keyboardType="numeric"
+              underlineColorAndroid='#ffffff'
+              onChangeText={this.handleChange.bind(this)}
+            />
+            <View style={styles.buttonGroup}>
+              <Button title="10%" onPress={this.updateTipAmount.bind(this, 0.1)} />
+              <Button title="20%" onPress={this.updateTipAmount.bind(this, 0.2)} />
+              <Button title="25%" onPress={this.updateTipAmount.bind(this, 0.25)} />
+              <TextInput
+                value={(tipAmount * 100).toString()}
+                placeholder="20%"
+                style={styles.customTip}
+                keyboardType="numeric"
+                underlineColorAndroid='#ffffff'
+                onChangeText={this.updateCustomTipAmount.bind(this)}
+              />
+            </View>
+          </View>
+        </Content>
       </View>
     )
   }
@@ -97,8 +97,6 @@ const styles = StyleSheet.create({
   customTip: {
     height: 40,
     width: '60%',
-    borderColor: '#333',
-    borderWidth: 1,
     padding: 5
   },
   heading: {
@@ -108,13 +106,17 @@ const styles = StyleSheet.create({
     fontSize: 24
   },
   buttonGroup: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 30
+  },
+  inputs: {
+    backgroundColor: '#eeeeee',
+    padding: 30
   },
   input: {
     height: 40,
     width: '100%',
-    borderColor: '#333',
-    borderWidth: 1,
     padding: 5
   }
 });

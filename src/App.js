@@ -1,8 +1,7 @@
 import React from 'react';
 import { StyleSheet, TextInput, Text, View, Button, Alert } from 'react-native';
 import {
-  Container,
-  Content
+  Container
 } from 'native-base';
 import AppHeader from './Components/AppHeader';
 import TipCalculator from './Components/TipCalculator';
@@ -14,37 +13,12 @@ import TipCalculator from './Components/TipCalculator';
 
 export default class App extends React.Component {
 
-  alert () {
-    Alert.alert(
-      'Whaddup hoes?',
-      'Where y\'all at?',
-      [
-        {
-          text: 'OK',
-          onPress: () => console.log('eat a penis'),
-        },
-        {
-          text: 'Cancel',
-          onPress: () => console.log('nah'),
-        }
-      ]
-    );
-  }
-
   render() {
 
     return (
       <Container>
         <AppHeader />
-        <Content padder>
-          <View>
-            <Button
-              title="Alert"
-              onPress={this.alert}
-            />
-          </View>
-          <TipCalculator />
-        </Content>
+        <TipCalculator />
       </Container>
     );
   }

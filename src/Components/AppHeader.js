@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { StyleSheet, StatusBar, View, Platform } from 'react-native';
 import {
   Header,
@@ -14,21 +14,20 @@ if (Platform.OS === 'ios' || 'android')
 
 */
 
-export default class AppHeader extends Component {
-  render() {
-    return (
-      <View style={styles.header}>
-        <Header>
-          <Left />
-          <Body>
-            <Title>App Header</Title>
-          </Body>
-          <Right />
-        </Header>
-      </View>
-    )
-  }
-}
+const AppHeader = () => (
+  <View style={styles.header}>
+    <Header>
+      <Left />
+      <Body>
+        <Title>App Header</Title>
+      </Body>
+      <Right />
+    </Header>
+  </View>
+)
+
+export default AppHeader;
+
 
 const styles = StyleSheet.create({
   header: {
