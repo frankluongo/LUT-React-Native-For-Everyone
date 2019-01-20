@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "react-native-for-everyone",
-    "slug": "react-native-for-everyone",
+    "name": "Tip Calculator",
+    "slug": "tip-calculator",
     "privacy": "public",
     "sdkVersion": "32.0.0",
     "platforms": [
@@ -23,7 +23,11 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.frankluongo.tipcalculator",
       "supportsTablet": true
+    },
+    "android": {
+      "package": "com.frankluongo.tipcalculator"
     }
   }
 }
